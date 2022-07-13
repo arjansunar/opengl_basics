@@ -10,7 +10,7 @@ void init(){
 }
 
 // drawing circle 
-void DrawCircle(float cx, float cy, float r) {
+void DrawCircleWithSpokes(float cx, float cy, float r) {
     glBegin(GL_LINE_LOOP);
     float x,y;
     for (int ii = 0; ii < 1000; ii++)   {
@@ -19,6 +19,15 @@ void DrawCircle(float cx, float cy, float r) {
         glVertex2f(x,y);//output vertex 
     }
     glEnd();
+	// drawing tire spokes
+    for (int ii = 0; ii <= 360; ii+= 36)   {
+		x= cx + r * cos(ii);
+      	y= cy + r * sin(ii);
+		glBegin(GL_LINE_LOOP);
+			glVertex2f(cx,cy);
+			glVertex2f(x,y);
+		glEnd();
+	}
 }
 
 
@@ -39,9 +48,9 @@ void display()
 	glLineWidth(1.0);
 
 	// front tire 
-	DrawCircle(200,100,25);
+	DrawCircleWithSpokes(200,100,25);
 	// back tire 9
-	DrawCircle(380,100,25);
+	DrawCircleWithSpokes(380,100,25);
 
 	// mid line 
 	glBegin(GL_LINE_LOOP);

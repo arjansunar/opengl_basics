@@ -1,12 +1,11 @@
-
 #include <math.h>
 #include <GL/glut.h>
 
 // drawing circle 
 void DrawCircle(float cx, float cy, float r) {
-    glBegin(GL_POLYGON);
+    glBegin(GL_LINE_LOOP);
     float x,y;
-    for (int ii = 0; ii < 1000; ii++)   {
+    for (int ii = 0; ii < 50; ii++)   {
       x= cx + r * cos(ii);
       y= cy + r * sin(ii);
         glVertex2f(x,y);//output vertex 
